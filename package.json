@@ -2,7 +2,6 @@
   "name": "arima",
   "version": "0.0.1",
   "description": "OpenPGP client built with Electron",
-  "main": "app.js",
   "repository": "https://github.com/kentakang/arima",
   "author": "Chan Kang <me@kentakang.com>",
   "license": "MIT",
