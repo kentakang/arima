@@ -6,5 +6,8 @@
   "repository": "https://github.com/kentakang/arima",
   "author": "Chan Kang <me@kentakang.com>",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "devDependencies": {
+    "electron": "^24.4.0"
+  }
 }
