@@ -1,13 +1,21 @@
 import React from 'react';
+import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import GlobalStyle from './components/GlobalStyle';
 
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <p>Hello, React!dd</p>,
+  },
+]);
+
 function App() {
   return (
-    <div>
-      <p>Hello, React</p>
+    <>
+      <RouterProvider router={router} />
       <GlobalStyle />
-    </div>
+    </>
   );
 }
 
