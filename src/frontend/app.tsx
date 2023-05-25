@@ -2,11 +2,12 @@ import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import GlobalStyle from './components/GlobalStyle';
+import KeychainRoute from './routes/keychain';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    element: <p>Hello, React!dd</p>,
+    element: <KeychainRoute />,
   },
 ]);
 
