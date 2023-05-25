@@ -11,5 +11,8 @@
   },
   "dependencies": {
     "typescript": "^5.0.4"
+  },
+  "scripts": {
+    "start": "tsc && electron ./dist/app.js"
   }
 }
