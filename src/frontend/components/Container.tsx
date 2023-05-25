@@ -6,6 +6,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   overflow: hidden;
+  -webkit-app-region: drag;
 `;
 
 export default Container;
