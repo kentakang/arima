@@ -12,6 +12,7 @@ const createWindow = () => {
 
   if (stage === 'DEV') {
     window.loadURL('http://localhost:5173');
+    window.webContents.openDevTools();
   } else {
     window.loadFile('frontend/index.html');
   }
