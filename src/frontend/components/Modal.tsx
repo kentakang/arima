@@ -12,6 +12,36 @@ const Wrapper = styled.div`
   z-index: 101;
   background: rgba(0, 0, 0, 0.5);
   -webkit-drag-region: no-drag;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const Container = styled.div`
+  min-width: 500px;
+  min-height: 100px;
+  background: #ffffff;
+  border-radius: 8px;
+`;
+
+const HeaderContainer = styled.header`
+  padding: 16px;
+  border-bottom: 1px solid #efefef;
+`;
+
+const HeaderTitle = styled.p`
+  font-size: 16px;
+  color: #111111;
+  font-weight: 600;
+`;
+
+const ContentsContainer = styled.div`
+  padding: 16px;
+`;
+
+const FooterContainer = styled.footer`
+  padding: 16px;
+  border-top: 1px solid #efefef;
 `;
 
 function Modal() {
@@ -19,7 +49,33 @@ function Modal() {
 
   if (modalValue !== null) {
     return (
-      <Wrapper onClick={() => { setModalValue(null); }} />
+      <Wrapper
+        onClick={(event) => {
+          if (event.target === event.currentTarget) {
+            setModalValue(null);
+          }
+        }}
+      >
+        <Container>
+          <HeaderContainer>
+            <HeaderTitle>{ modalValue.title }</HeaderTitle>
+          </HeaderContainer>
+          {
+            modalValue.contents !== undefined && (
+              <ContentsContainer>
+                { modalValue.contents }
+              </ContentsContainer>
+            )
+          }
+          {
+            modalValue.footer !== undefined && (
+              <FooterContainer>
+                { modalValue.footer }
+              </FooterContainer>
+            )
+          }
+        </Container>
+      </Wrapper>
     );
   }
 
