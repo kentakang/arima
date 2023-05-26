@@ -1,7 +1,7 @@
 import { WebContents, ipcMain } from 'electron';
 import { Low } from 'lowdb';
 
-import Keychain, { IKeychain } from '../keychain';
+import Keychain, { IKeychain, ICreateKeychainParameters } from '../keychain';
 
 export interface IInternalDatabase {
   keychains: IKeychain[];
@@ -25,6 +25,10 @@ class Bridge {
       const keychains = await this.keychain.getKeychains();
 
       return keychains;
+    });
+
+    ipcMain.handle('createKeychain', async (event, parameters: ICreateKeychainParameters) => {
+      await this.keychain.createKeychain(parameters);
     });
   }
 }

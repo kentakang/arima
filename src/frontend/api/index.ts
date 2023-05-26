@@ -1,7 +1,14 @@
+/* eslint-disable no-unused-vars */
 export interface IKeychain {
   type: 'public' | 'private';
   name: string;
   email: string;
+}
+
+export interface ICreateKeychainParameters {
+  name: string;
+  email: string;
+  password: string;
 }
 
 declare global {
@@ -9,6 +16,7 @@ declare global {
     bridge: {
       keychain: {
         getKeychains: () => Promise<IKeychain[]>;
+        createKeychain: (parameters: ICreateKeychainParameters) => Promise<void>;
       }
     };
   }
