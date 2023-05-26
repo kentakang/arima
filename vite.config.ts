@@ -3,7 +3,9 @@ import react from '@vitejs/plugin-react';
 
 export default defineConfig({
   root: `${process.cwd()}/src/frontend`,
-  plugins: [react()],
+  plugins: [
+    react(),
+  ],
   build: {
     outDir: '../../dist/frontend',
   },

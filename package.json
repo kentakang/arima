@@ -40,7 +40,7 @@
     "run:electron": "electron ./dist/app.js",
     "dev:vite": "vite",
     "build:vite": "vite build",
-    "build:electron": "cross-env STAGE=PROD && webpack",
+    "build:electron": "webpack",
     "start": "yarn build:electron && yarn build:vite && cross-env STAGE=PROD yarn run:electron",
     "dev": "concurrently \"yarn dev:vite\" \"yarn build:electron && cross-env STAGE=DEV yarn run:electron\""
   }

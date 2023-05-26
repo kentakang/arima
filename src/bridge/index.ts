@@ -21,10 +21,10 @@ class Bridge {
   }
 
   initialize() {
-    ipcMain.on('getKeychains', (event) => {
-      this.keychain.getKeychains().then((keychains) => {
-        event.reply('keychains', JSON.stringify(keychains));
-      });
+    ipcMain.handle('getKeychains', async (event) => {
+      const keychains = await this.keychain.getKeychains();
+
+      return keychains;
     });
   }
 }
