@@ -1,7 +1,5 @@
 import React from 'react';
-import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
-import modalAtom from '../atom/modalAtom';
 
 const Wrapper = styled.div`
   width: 100vw;
@@ -44,42 +42,45 @@ const FooterContainer = styled.footer`
   border-top: 1px solid #efefef;
 `;
 
-function Modal() {
-  const [modalValue, setModalValue] = useRecoilState(modalAtom);
+export interface ModalProps {
+  title: string;
+  contents?: React.ReactNode;
+  footer?: React.ReactNode;
+  onClose?: () => void;
+}
 
-  if (modalValue !== null) {
-    return (
-      <Wrapper
-        onClick={(event) => {
-          if (event.target === event.currentTarget) {
-            setModalValue(null);
-          }
-        }}
-      >
-        <Container>
-          <HeaderContainer>
-            <HeaderTitle>{ modalValue.title }</HeaderTitle>
-          </HeaderContainer>
-          {
-            modalValue.contents !== undefined && (
-              <ContentsContainer>
-                { modalValue.contents }
-              </ContentsContainer>
-            )
-          }
-          {
-            modalValue.footer !== undefined && (
-              <FooterContainer>
-                { modalValue.footer }
-              </FooterContainer>
-            )
-          }
-        </Container>
-      </Wrapper>
-    );
-  }
-
-  return null;
+function Modal({
+  title, contents, footer, onClose,
+}: ModalProps) {
+  return (
+    <Wrapper
+      onClick={(event) => {
+        if (event.target === event.currentTarget && onClose !== undefined) {
+          onClose();
+        }
+      }}
+    >
+      <Container>
+        <HeaderContainer>
+          <HeaderTitle>{ title }</HeaderTitle>
+        </HeaderContainer>
+        {
+              contents !== undefined && (
+                <ContentsContainer>
+                  { contents }
+                </ContentsContainer>
+              )
+            }
+        {
+              footer !== undefined && (
+                <FooterContainer>
+                  { footer }
+                </FooterContainer>
+              )
+            }
+      </Container>
+    </Wrapper>
+  );
 }
 
 export default Modal;

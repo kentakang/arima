@@ -1,5 +1,5 @@
 import { Low } from 'lowdb';
-import OpenPGP from 'openpgp';
+import * as OpenPGP from 'openpgp';
 
 import { IInternalDatabase } from '../bridge';
 
@@ -29,10 +29,10 @@ class Keychain {
   async createKeychain(parameters: ICreateKeychainParameters): Promise<void> {
     try {
       const result = await OpenPGP.generateKey({
-        userIDs: {
+        userIDs: [{
           name: parameters.name,
           email: parameters.email,
-        },
+        }],
         type: 'rsa',
         passphrase: parameters.password,
         rsaBits: 4096,
