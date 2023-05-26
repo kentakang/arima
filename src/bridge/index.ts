@@ -21,7 +21,7 @@ class Bridge {
   }
 
   initialize() {
-    ipcMain.handle('getKeychains', async (event) => {
+    ipcMain.handle('getKeychains', async () => {
       const keychains = await this.keychain.getKeychains();
 
       return keychains;
