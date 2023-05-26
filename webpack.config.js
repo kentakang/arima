@@ -22,7 +22,7 @@ module.exports = [
     target: 'electron24.4-main',
   },
   {
-    entry: './src/preload.ts',
+    entry: './src/preload.js',
     target: 'electron-preload',
     output: {
       path: path.join(__dirname, 'dist'),

@@ -1,7 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
 
-import { ICreateKeychainParameters } from './keychain';
-
 contextBridge.exposeInMainWorld('bridge', {
   keychain: {
     async getKeychains() {
@@ -9,7 +7,7 @@ contextBridge.exposeInMainWorld('bridge', {
 
       return keychains;
     },
-    async createKeychain(parameters: ICreateKeychainParameters) {
+    async createKeychain(parameters) {
       await ipcRenderer.invoke('createKeychain', parameters);
     },
   },
