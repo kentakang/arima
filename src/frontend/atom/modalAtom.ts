@@ -5,7 +5,6 @@ export interface ModalAtom {
   title: string;
   contents?: ReactElement;
   footer?: ReactElement;
-  onClose?: () => void;
 }
 
 const modalAtom = atom<ModalAtom | null>({

@@ -5,6 +5,7 @@ import { RecoilRoot } from 'recoil';
 import DraggableArea from './components/DraggableArea';
 import GlobalStyle from './components/GlobalStyle';
 import KeychainRoute from './routes/keychain';
+import Modal from './components/Modal';
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,7 @@ function App() {
       <DraggableArea />
       <RouterProvider router={router} />
       <GlobalStyle />
+      <Modal />
     </RecoilRoot>
   );
 }
