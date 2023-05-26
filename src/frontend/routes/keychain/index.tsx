@@ -10,8 +10,6 @@ function KeychainRoute() {
 
   useEffect(() => {
     window.bridge.keychain.getKeychains().then((newKeychains) => {
-      console.log(newKeychains);
-
       setKeychains(newKeychains);
     });
   }, []);
