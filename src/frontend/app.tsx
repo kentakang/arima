@@ -1,5 +1,6 @@
 import React from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RecoilRoot } from 'recoil';
 
 import DraggableArea from './components/DraggableArea';
 import GlobalStyle from './components/GlobalStyle';
@@ -14,11 +15,11 @@ const router = createBrowserRouter([
 
 function App() {
   return (
-    <>
+    <RecoilRoot>
       <DraggableArea />
       <RouterProvider router={router} />
       <GlobalStyle />
-    </>
+    </RecoilRoot>
   );
 }
 
