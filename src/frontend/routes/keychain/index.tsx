@@ -7,16 +7,20 @@ import { IKeychain } from '../../api';
 import SidebarContentsHeader from '../../components/SidebarContentsHeader';
 import Button from '../../components/Button';
 import useNewKeychainModal from './modal/new';
+import KeychainList from './components/KeychainList';
 
 function KeychainRoute() {
   const [keychains, setKeychains] = useState<IKeychain[]>([]);
-  const { open: openNewKeychainModal } = useNewKeychainModal();
 
   const getKeychains = () => {
     window.bridge.keychain.getKeychains().then((newKeychains) => {
       setKeychains(newKeychains);
     });
   };
+
+  const { open: openNewKeychainModal } = useNewKeychainModal({
+    reloadKeychains: getKeychains,
+  });
 
   useEffect(() => {
     getKeychains();
@@ -35,6 +39,7 @@ function KeychainRoute() {
             New keychain
           </Button>
         </SidebarContentsHeader>
+        <KeychainList keychains={keychains} />
       </SidebarContents>
     </Container>
   );

@@ -18,7 +18,7 @@ const FooterContainer = styled.div`
   justify-content: flex-end;
 `;
 
-const useNewKeychainModal = () => {
+const useNewKeychainModal = ({ reloadKeychains }: { reloadKeychains: () => void; }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -35,6 +35,7 @@ const useNewKeychainModal = () => {
         email,
         password,
       }).then(() => {
+        reloadKeychains();
         setVisible(false);
       });
     }
