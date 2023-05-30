@@ -5,6 +5,7 @@ import { EllipsisVertical } from 'react-ionicons';
 
 import { IKeychain } from '../../../api';
 import useRemoveKeychainModal from '../modal/remove';
+import formatKeyType from '../../../utils/formatKeyType';
 
 const Container = styled.div`
   height: 100%;
@@ -70,6 +71,7 @@ function KeychainList({ keychains, reloadKeychains }: KeychainListProps) {
       <Table>
         <thead>
           <th style={{ borderTopLeftRadius: 8 }}>#</th>
+          <th>Type</th>
           <th>Name</th>
           <th>Email</th>
           <th style={{ borderTopRightRadius: 8 }} />
@@ -79,6 +81,7 @@ function KeychainList({ keychains, reloadKeychains }: KeychainListProps) {
             keychains.map((keychain, idx) => (
               <tr>
                 <td>{ idx + 1 }</td>
+                <td>{formatKeyType(keychain.type)}</td>
                 <td>{keychain.name}</td>
                 <td>{keychain.email}</td>
                 <td>

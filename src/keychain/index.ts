@@ -3,10 +3,14 @@ import * as OpenPGP from 'openpgp';
 
 import { IInternalDatabase } from '../bridge';
 
+export type KeychainType = 'public' | 'private' | 'both';
+
 export interface IKeychain {
-  type: 'public' | 'private';
+  type: KeychainType;
   name: string;
   email: string;
+  publicKey: string;
+  privateKey?: string;
 }
 
 export interface ICreateKeychainParameters {
@@ -44,9 +48,11 @@ class Keychain {
       }
 
       this.db.data.keychains.push({
-        type: 'private',
+        type: 'both',
         name: parameters.name,
         email: parameters.email,
+        publicKey: result.publicKey,
+        privateKey: result.privateKey,
       });
 
       await this.db.write();
