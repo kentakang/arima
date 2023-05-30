@@ -10,5 +10,8 @@ contextBridge.exposeInMainWorld('bridge', {
     async createKeychain(parameters) {
       await ipcRenderer.invoke('createKeychain', parameters);
     },
+    async removeKeychain(idx) {
+      await ipcRenderer.invoke('removeKeychain', idx);
+    },
   },
 });
