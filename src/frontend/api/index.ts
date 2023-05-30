@@ -17,6 +17,7 @@ declare global {
       keychain: {
         getKeychains: () => Promise<IKeychain[]>;
         createKeychain: (parameters: ICreateKeychainParameters) => Promise<void>;
+        removeKeychain: (idx: number) => Promise<void>;
       }
     };
   }

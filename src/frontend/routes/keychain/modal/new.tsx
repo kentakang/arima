@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-
 import { useModal } from 'react-modal-hook';
+
 import TextInput from '../../../components/TextInput';
 import Modal from '../../../components/Modal';
 import Button from '../../../components/Button';
@@ -16,6 +16,7 @@ const FooterContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  gap: 12px;
 `;
 
 const useNewKeychainModal = ({ reloadKeychains }: { reloadKeychains: () => void; }) => {
@@ -104,4 +105,5 @@ const useNewKeychainModal = ({ reloadKeychains }: { reloadKeychains: () => void;
 export default useNewKeychainModal;
 export {
   ContentsContainer as ModalContentsContainer,
+  FooterContainer as ModalFooterContainer,
 };

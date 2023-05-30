@@ -30,6 +30,10 @@ class Bridge {
     ipcMain.handle('createKeychain', async (event, parameters: ICreateKeychainParameters) => {
       await this.keychain.createKeychain(parameters);
     });
+
+    ipcMain.handle('removeKeychain', async (event, idx: number) => {
+      await this.keychain.removeKeychain(idx);
+    });
   }
 }
 

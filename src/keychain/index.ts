@@ -56,6 +56,12 @@ class Keychain {
       throw error;
     }
   }
+
+  async removeKeychain(idx: number): Promise<void> {
+    this.db.data.keychains.splice(idx, 1);
+
+    await this.db.write();
+  }
 }
 
 export default Keychain;

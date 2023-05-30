@@ -39,7 +39,7 @@ function KeychainRoute() {
             New keychain
           </Button>
         </SidebarContentsHeader>
-        <KeychainList keychains={keychains} />
+        <KeychainList keychains={keychains} reloadKeychains={getKeychains} />
       </SidebarContents>
     </Container>
   );
