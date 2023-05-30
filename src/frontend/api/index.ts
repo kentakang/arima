@@ -1,8 +1,12 @@
 /* eslint-disable no-unused-vars */
+export type KeychainType = 'public' | 'private' | 'both';
+
 export interface IKeychain {
-  type: 'public' | 'private';
+  type: KeychainType;
   name: string;
   email: string;
+  publicKey: string;
+  privateKey?: string;
 }
 
 export interface ICreateKeychainParameters {

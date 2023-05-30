@@ -5,6 +5,8 @@ import { EllipsisVertical } from 'react-ionicons';
 
 import { IKeychain } from '../../../api';
 import useRemoveKeychainModal from '../modal/remove';
+import formatKeyType from '../../../utils/formatKeyType';
+import useShowKeychainModal from '../modal/showKey';
 
 const Container = styled.div`
   height: 100%;
@@ -35,8 +37,8 @@ const Table = styled.table`
 `;
 
 const MoreViewModal = styled.div`
-  width: auto;
-  min-width: 80px;
+  width: 100%;
+  min-width: 150px;
   background: #ffffff;
   border: 1px solid #efefef;
   border-radius: 8px;
@@ -47,7 +49,7 @@ const MoreViewModal = styled.div`
 `;
 
 const MoreViewListItem = styled.div<{ last?: boolean; }>`
-  padding: 8px;
+  padding: 12px 8px;
   border-bottom: ${(props) => (props.last ? 0 : 1)}px solid #efefef;
   cursor: pointer;
   font-size: 12px;
@@ -64,12 +66,14 @@ function KeychainList({ keychains, reloadKeychains }: KeychainListProps) {
   const { open: openRemove } = useRemoveKeychainModal({
     reloadKeychains,
   });
+  const { open: openShowKeychain } = useShowKeychainModal();
 
   return (
     <Container onClick={() => { setMoreActiveIdx(null); }}>
       <Table>
         <thead>
           <th style={{ borderTopLeftRadius: 8 }}>#</th>
+          <th>Type</th>
           <th>Name</th>
           <th>Email</th>
           <th style={{ borderTopRightRadius: 8 }} />
@@ -79,6 +83,7 @@ function KeychainList({ keychains, reloadKeychains }: KeychainListProps) {
             keychains.map((keychain, idx) => (
               <tr>
                 <td>{ idx + 1 }</td>
+                <td>{formatKeyType(keychain.type)}</td>
                 <td>{keychain.name}</td>
                 <td>{keychain.email}</td>
                 <td>
@@ -100,11 +105,26 @@ function KeychainList({ keychains, reloadKeychains }: KeychainListProps) {
                   {
                     moreActiveIdx === idx && (
                       <MoreViewModal onClick={(event) => { event.stopPropagation(); }}>
+                        {
+                          (keychain.type === 'public' || keychain.type === 'both') && (
+                            <MoreViewListItem onClick={() => { openShowKeychain(keychain, 'public'); }}>
+                              Show public key
+                            </MoreViewListItem>
+                          )
+                        }
+                        {
+                          (keychain.type === 'private' || keychain.type === 'both') && (
+                            <MoreViewListItem onClick={() => { openShowKeychain(keychain, 'private'); }}>
+                              Show private key
+                            </MoreViewListItem>
+                          )
+                        }
                         <MoreViewListItem
                           style={{ color: '#d63031' }}
                           onClick={() => {
                             openRemove(idx);
                           }}
+                          last
                         >
                           Delete
                         </MoreViewListItem>
