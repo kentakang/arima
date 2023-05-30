@@ -80,7 +80,7 @@ function KeychainList({ keychains, reloadKeychains }: KeychainListProps) {
         </thead>
         <tbody>
           {
-            keychains.map((keychain, idx) => (
+            keychains.length > 0 ? keychains.map((keychain, idx) => (
               <tr>
                 <td>{ idx + 1 }</td>
                 <td>{formatKeyType(keychain.type)}</td>
@@ -133,7 +133,11 @@ function KeychainList({ keychains, reloadKeychains }: KeychainListProps) {
                   }
                 </td>
               </tr>
-            ))
+            )) : (
+              <tr>
+                <td colSpan={5}>Keychain list is empty.</td>
+              </tr>
+            )
           }
         </tbody>
       </Table>
