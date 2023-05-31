@@ -15,6 +15,7 @@ const Title = styled.h1`
   font-size: 16px;
   color: #111111;
   font-weight: bold;
+  line-height: 33px;
 `;
 
 export interface SidebarContentsHeaderProps {
