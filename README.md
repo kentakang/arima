@@ -10,4 +10,4 @@ Development roadmap is [here]((https://github.com/kentakang/arima/issues/1)).
 
 ## License
 
-Mose cose is released under the MIT License.
+Most code is released under the MIT License.
