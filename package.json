@@ -1,8 +1,8 @@
 {
-  "name": "arima",
+  "name": "hayasaka",
   "version": "0.0.1",
   "description": "OpenPGP client built with Electron",
-  "repository": "https://github.com/kentakang/arima",
+  "repository": "https://github.com/kentakang/hayasaka",
   "author": "Chan Kang <me@kentakang.com>",
   "license": "MIT",
   "private": false,
